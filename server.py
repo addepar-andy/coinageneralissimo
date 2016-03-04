@@ -36,6 +36,13 @@ def synsets(wurd):
     ser = [ser_synset(syn) for syn in portmanatee.synsets(wurd)]
     return jsonify(synsets=ser)
 
+@app.route('/gimme', methods=['POST'])
+def gimme():
+    synids = request.get_json()['synset_ids']
+    synsets = [portmanatee.synset(id) for id in synids]
+    words = list(portmanatee.feelinglucky(synsets))
+    return jsonify(words=words)
+
 def ser_synset(syn):
     return {'id': syn.name(), 'def': syn.definition(), 'words': syn.lemma_names()}
 

@@ -1,6 +1,8 @@
 <div>
   Search
   {{ input type="text" value=searchStr placeholder="word" enter="search" }}
+  <button {{action "search"}}>Go</button>
+  <button {{action "lucky"}}>I'm Feeling Lucky</button>
   <button {{action "clear"}}>Clear</button>
 </div>
 <br>

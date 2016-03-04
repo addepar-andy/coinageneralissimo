@@ -21,7 +21,7 @@ def related(synset):
 def everything(synset):
     return related(synset) + hyper(synset) + hypo(synset)
 
-def nltk_hyponyms(syns):
+def feelinglucky(syns):
     res = set(extract_words(syns))
 
     if len(res) > 100:
@@ -167,11 +167,11 @@ def go(syns1, syns2):
     if isinstance(syns1, str):
         syn1 = [syns1]
     else:
-        syn1 = filter_words(nltk_hyponyms(syns1))
+        syn1 = filter_words(feelinglucky(syns1))
     if isinstance(syns2, str):
         syn2 = [syns2]
     else:
-        syn2 = filter_words(nltk_hyponyms(syns2))
+        syn2 = filter_words(feelinglucky(syns2))
 
     print
     print sorted(syn1)

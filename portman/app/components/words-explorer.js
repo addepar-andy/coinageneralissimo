@@ -14,7 +14,27 @@ export default Ember.Component.extend({
     clear: function() {
       this.set('synGroups', Ember.A());
     },
-    search: function(wurd) {
+    lucky: function() {
+      const ids = [];
+      this.get('synGroups').forEach((syns) => {
+        syns.forEach((syn) => {
+          ids.push(syn.get('id'));
+        });
+      });
+      const payload = JSON.stringify({synset_ids: ids.uniq()});
+      ajax({
+        type: 'POST',
+        url: '/gimme',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: payload,
+      }).then((result) => {
+        const myWords = result.words.join('\n')
+        this.set('target', this.get('target') + '\n' + myWords);
+      })
+    },
+    search: function() {
+      const wurd = this.get('searchStr');
       ajax({
         url: '/synsets/' + wurd.trim()
       }).then((results) => {
