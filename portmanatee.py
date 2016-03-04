@@ -199,6 +199,16 @@ def choose_syns(wurd):
         result.append(syns[choice])
     return result
 
+def synsets(wurd):
+    return wn.synsets(wurd)
+
+def synset(id):
+    return wn.synset(id)
+
+def init():
+    phonemes()
+    wn.synsets('dog')
+
 def main(args):
     syns1 = choose_syns(args[1])
     syns2 = choose_syns(args[2])
