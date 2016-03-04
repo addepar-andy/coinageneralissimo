@@ -87,6 +87,8 @@ def load_phonemes(file):
             print line
             print res
         phonemes[res[0]].append(res[1])
+    res = load_phoneme('ADDEPAR  AE1 D AH1 P AA1 R')
+    phonemes[res[0]].append(res[1])
     return phonemes
 
 def load_phoneme(line):

@@ -1,0 +1,27 @@
+<div style="width: 200px; float: left; border-right: solid gray 1px; padding: 20px; clear: right;">
+  <div>
+    Subject 1:<br>
+    {{textarea value=model.words1 rows="10"}}
+  </div>
+  <div>
+    Subject 2:<br>
+    {{textarea value=model.words2 rows="10"}}
+  </div>
+  <button {{action 'getPortmanteaus'}}>GO!</button>
+  <div>
+    portmanteaus:
+    <ul>
+      {{#each model.portmanteaus as |port|}}
+      <li>{{port.w1}} + {{port.w2}} ({{port.score}})</li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+<div style="width: 500px; float: left; border-right: solid gray 1px; padding: 20px; clear: right;">
+  <h3>Subject 1</h3>
+  {{words-explorer target=model.words1 }}
+</div>
+<div style="width: 500px; float: left; padding: 20px;">
+  <h3>Subject 2</h3>
+  {{words-explorer target=model.words2 }}
+</div>

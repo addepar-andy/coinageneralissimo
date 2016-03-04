@@ -1,0 +1,23 @@
+<div>
+  Search
+  {{ input type="text" value=searchStr placeholder="word" enter="search" }}
+  <button {{action "clear"}}>Clear</button>
+</div>
+<br>
+<div class="syns">
+  {{#each synGroups as |synGroup|}}
+    <div class="syngroup">
+      <button {{action "hide" synGroup}}>hide</button>
+      <button {{action "add" synGroup}}>add all</button>
+      ========
+    </div>
+    {{#each synGroup as |syn|}}
+    {{syn-set
+      synset=syn
+      wordsTarget=target
+      explorerSyns=synGroups
+      myGroup=synGroup
+    }}
+    {{/each}}
+  {{/each}}
+</div>

@@ -1,0 +1,16 @@
+<p class="synset">
+  {{synset.words.firstObject}}
+  {{#if showDef}}({{synset.def}}){{/if}}
+</p>
+<p class="words">
+  {{#each synset.words as |word|}}
+    {{word}}{{#unless @last}},{{/unless}}
+  {{/each}}
+</p>
+<p class="controls">
+  <button {{action "add"}}>add words</button>
+  <button {{action "up"}}>up</button>
+  <button {{action "down"}}>down</button>
+  <button {{action "rel"}}>rel</button>
+  <button {{action "hide"}}>hide</button>
+</p>

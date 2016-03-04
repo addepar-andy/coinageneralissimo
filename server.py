@@ -19,17 +19,17 @@ def synset(id):
 @app.route('/synset/<id>/hypos', methods=['GET'])
 def synset_hypos(id):
     syns = portmanatee.synset(id).closure(lambda s:s.hyponyms(), depth=1)
-    return jsonify(synset=[ser_synset(s) for s in syns])
+    return jsonify(synsets=[ser_synset(s) for s in syns])
 
 @app.route('/synset/<id>/hypers', methods=['GET'])
 def synset_hyper(id):
     syns = portmanatee.synset(id).closure(lambda s:s.hypernyms(), depth=1)
-    return jsonify(synset=[ser_synset(s) for s in syns])
+    return jsonify(synsets=[ser_synset(s) for s in syns])
 
 @app.route('/synset/<id>/rels', methods=['GET'])
 def synset_rel(id):
     syns = portmanatee.synset(id).closure(lambda s:s.also_sees() + s.similar_tos(), depth=1)
-    return jsonify(synset=[ser_synset(s) for s in syns])
+    return jsonify(synsets=[ser_synset(s) for s in syns])
 
 @app.route('/synsets/<wurd>', methods=['GET'])
 def synsets(wurd):
