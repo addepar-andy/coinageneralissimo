@@ -2,12 +2,6 @@ import collections
 import re
 
 from nltk.corpus import wordnet as wn
-import requests
-
-def thesaurus_synonyms(wurd):
-    url = 'http://www.thesaurus.com/browse/{0}?s=t'.format(wurd)
-    t = requests.get(url).text.split('<h2>Antonyms')[0]
-    return re.findall(r'<span class="text">([^<]*)<.span>', t) + [wurd]
 
 def hypo(synset):
     return synset.hyponyms()
