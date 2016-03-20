@@ -14,7 +14,7 @@ const MainRoute = Ember.Route.extend({
   model: function() {
     return Ember.Object.create({
       words1: '',
-      words2: 'apple'
+      words2: ''
     });
   },
   actions: {

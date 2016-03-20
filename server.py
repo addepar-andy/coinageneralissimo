@@ -43,14 +43,17 @@ def gimme():
     words = list(portmanatee.feelinglucky(synsets))
     return jsonify(words=words)
 
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
+
+@app.route('/assets/<file_name>')
+def asset(file_name):
+    return app.send_static_file('assets/' + file_name)
+
 def ser_synset(syn):
     return {'id': syn.name(), 'def': syn.definition(), 'words': syn.lemma_names()}
 
 if __name__ == '__main__':
-    import sys
-    print 'initializing... ',
-    sys.stdout.flush()
-    portmanatee.init()
-    print 'done'
     app.run(debug=True)
 
